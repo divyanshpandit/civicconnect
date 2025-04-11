@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CivicConnect - Feedback</title>
+</head>
+<body>
+  <h2>Send Feedback to Your Representative</h2>
+
+  <form action="/submit" method="POST">
+    <input name="name" placeholder="Your Name" required><br>
+    <input name="neighborhood" placeholder="Neighborhood" required><br>
+    <textarea name="message" placeholder="Your message" required></textarea><br>
+
+    <!-- Hidden input to capture location -->
+    <input type="hidden" name="location" id="location">
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <script>
+    // Get user's current geolocation and fill the hidden input
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      document.getElementById('location').value = `${lat},${lon}`;
+    });
+  </script>
+
+  <hr>
+
+  <!-- ✅ Navigation Links -->
+  <h3>Explore More Civic Tools:</h3>
+  <p><a href="/summarize">🧠 Try the Bill Summarizer</a></p>
+  <p><a href="/dashboard">📣 View Public Feedback</a></p>
+  <p><a href="/vote">Vote on Local Legislation</a></p>
+  <p><a href="/alerts">View Community Alerts</a></p>
+  <p><a href="/poll">Vote in Community Poll</a></p>
+  <p><a href="/create-poll">Create a New Poll</a></p>
+  <p><a href="/impact">Add Impact Data</a></p>
+  <p><a href="/impact-view">View Impact Visualization</a></p>
+  <p><a href="/map">📍 View Feedback Map</a></p>
+
+</body>
+</html>
